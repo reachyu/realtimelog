@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/streadway/amqp"
 	"log"
+	"reallog/common/util"
 	"reallog/common/vo"
 	"strconv"
 	"time"
@@ -17,8 +18,10 @@ import (
 func PublishMsgRout(exName string,rtKey string, msg string) {
 
 	ch, err := MQInstance().GetMQChannel()
-	failOnError(err, "Failed to open a channel")
+	util.FailOnError(err, "Failed to open a channel")
 	defer ch.Close()
+
+	log.Printf("路由队列接发送消息======== [x] %s", msg)
 
 	err = ch.ExchangeDeclare(
 		exName, // name
@@ -29,7 +32,7 @@ func PublishMsgRout(exName string,rtKey string, msg string) {
 		false,        // no-wait
 		nil,          // arguments
 	)
-	failOnError(err, "Failed to declare an exchange")
+	util.FailOnError(err, "Failed to declare an exchange")
 	err = ch.Publish(
 		exName,          // exchange
 		rtKey, // routing key
@@ -42,16 +45,15 @@ func PublishMsgRout(exName string,rtKey string, msg string) {
 			ContentType: "text/plain",
 			Body:        []byte(msg),
 		})
-	failOnError(err, "Failed to publish a message")
+	util.FailOnError(err, "Failed to publish a message")
 }
 
-
-type Callback func(trainId string,msg string)
+type RoutCallback func(trainId string,msg string)
 
 // 消费消息(消费者)
-func ConsumeMsgRout(exName string,queName string,rtKey string,callback Callback) {
+func ConsumeMsgRout(exName string,queName string,rtKey string,callback RoutCallback) {
 	ch, err := MQInstance().GetMQChannel()
-	failOnError(err, "Failed to receive a message")
+	util.FailOnError(err, "Failed to receive a message")
 	defer ch.Close()
 
 	err = ch.ExchangeDeclare(
@@ -63,7 +65,7 @@ func ConsumeMsgRout(exName string,queName string,rtKey string,callback Callback)
 		false,    // no-wait
 		nil,      // arguments
 	)
-	failOnError(err, "Failed to receive a message")
+	util.FailOnError(err, "Failed to receive a message")
 
 	_, err = ch.QueueDeclare(
 		queName,    // name
@@ -73,7 +75,7 @@ func ConsumeMsgRout(exName string,queName string,rtKey string,callback Callback)
 		false, // no-wait
 		nil,   // arguments
 	)
-	failOnError(err, "Failed to receive a message")
+	util.FailOnError(err, "Failed to receive a message")
 
 	err = ch.QueueBind(
 		queName, // queue name
@@ -82,7 +84,7 @@ func ConsumeMsgRout(exName string,queName string,rtKey string,callback Callback)
 		false,
 		nil,
 	)
-	failOnError(err, "Failed to receive a message")
+	util.FailOnError(err, "Failed to receive a message")
 
 	msgs, err := ch.Consume(
 		queName, // queue
@@ -106,18 +108,12 @@ func ConsumeMsgRout(exName string,queName string,rtKey string,callback Callback)
 			strAddress := &callback
 			strPointer := fmt.Sprintf("%d", unsafe.Pointer(strAddress))
 			intPointer, _ := strconv.ParseInt(strPointer, 10, 0)
-			var pointer *Callback
-			pointer = *(**Callback)(unsafe.Pointer(&intPointer))
-			(Callback)(*pointer)(id64,time.Now().String() + "====="+ msgTrainLog.TrainLog)
+			var pointer *RoutCallback
+			pointer = *(**RoutCallback)(unsafe.Pointer(&intPointer))
+			(RoutCallback)(*pointer)(id64,time.Now().String() + "====="+ msgTrainLog.TrainLog)
 
 			log.Printf("路由队列接收到消息======== [x] %s", d.Body)
 		}
 	}()
 	<-forever
-}
-
-func failOnError(err error, msg string) {
-	if err != nil {
-		log.Fatalf("%s: %s", msg, err)
-	}
 }

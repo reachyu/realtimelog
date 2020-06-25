@@ -5,6 +5,9 @@
 公共方法
 ## public
 静态文件目录
+* ws1.html和ws2.html是RabbitMQ 路由模式验证前端
+* f1.html和f2.html是RabbitMQ 发布订阅模式验证前端
+* k1.html和k2.html是kafka验证前端
 ### httpserver
 http服务
 ### msgmq

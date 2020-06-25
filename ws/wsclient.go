@@ -86,6 +86,7 @@ func (c *WSClient) readPump() {
 		_, message, err := c.conn.ReadMessage()
 		if err != nil {
 			if websocket.IsUnexpectedCloseError(err, websocket.CloseGoingAway, websocket.CloseAbnormalClosure) {
+                // todo:断开连接后，会到这里来
 				log.Printf("error: %v", err)
 			}
 			break
@@ -155,6 +156,14 @@ func ServeWs(hub *WSHub, c *gin.Context) {
 
 	// 监听日志消息
 	go mq.ConsumeMsgRout(_const.RABBITMQ_ROUT_EXCHANGE_NAME,_const.RABBITMQ_ROUT_QUEUE + trainId,_const.RABBITMQ_ROUT_ROUTING_KEY + trainId,SendLogsToWeb)
+	//go mq.ConsumeMsgFanout(_const.RABBITMQ_FANOUT_EXCHANGE_NAME,_const.RABBITMQ_FANOUT_QUEUE + trainId,SendLogsToWeb)
+
+	// kafka：相同的group.id的消费者将视为同一个消费者组, 每个消费者都需要设置一个组id,
+	// 每条消息只能被 consumer group 中的一个 Consumer 消费,但可以被多个 consumer group 消费
+    //go mq.ConsumeMsgKafka(_const.KAFKA_LOGS_GROUP +  trainId,_const.KAFKA_LOGS_TOPIC + trainId,SendLogsToWeb)
+
+	//go mq.TestKafkaComs(_const.KAFKA_LOGS_GROUP + strconv.FormatInt(rand.Int63n(10000000),10),_const.KAFKA_LOGS_TOPIC + trainId,SendLogsToWeb)
+
 
 	// Allow collection of memory referenced by the caller by doing all work in
 	// new goroutines.

@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8a579242-1f77-4996-a0d3-28fc6ee6024d" name="Default Changelist" comment="" />
+    <list default="true" id="8a579242-1f77-4996-a0d3-28fc6ee6024d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/const/envconst.go" beforeDir="false" afterPath="$PROJECT_DIR$/common/const/envconst.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/msgmq/mqrouting.go" beforeDir="false" afterPath="$PROJECT_DIR$/msgmq/mqrouting.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ws/wsclient.go" beforeDir="false" afterPath="$PROJECT_DIR$/ws/wsclient.go" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,16 +26,35 @@
     </option>
   </component>
   <component name="GOROOT" path="C:\Go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="GoLibraries">
     <option name="indexEntireGoPath" value="false" />
   </component>
   <component name="ProjectId" id="1dG2iJc0slWuAxfx9EOGQMCN830" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="go.vgo" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\IdeaProjects\mygopro\realtimelog\public" />
+      <recent name="C:\IdeaProjects\mygopro\realtimelog\msgmq" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -68,15 +97,44 @@
       <workItem from="1592037238168" duration="965000" />
       <workItem from="1592038210123" duration="576000" />
       <workItem from="1592041943056" duration="646000" />
-      <workItem from="1592058252313" duration="706000" />
+      <workItem from="1592058252313" duration="1828000" />
+      <workItem from="1592184922393" duration="16000" />
+      <workItem from="1592184959190" duration="5869000" />
+      <workItem from="1592201071124" duration="8066000" />
+      <workItem from="1592270942578" duration="6037000" />
+      <workItem from="1592287447715" duration="11792000" />
+      <workItem from="1592357396226" duration="3106000" />
+      <workItem from="1592363965081" duration="2559000" />
+      <workItem from="1592373948956" duration="15669000" />
+      <workItem from="1592442906630" duration="3103000" />
+      <workItem from="1592450622678" duration="13000" />
+      <workItem from="1592552951075" duration="3774000" />
+      <workItem from="1592614758681" duration="2449000" />
+      <workItem from="1592820464235" duration="624000" />
+      <workItem from="1592827910250" duration="746000" />
+      <workItem from="1592876891809" duration="97000" />
+      <workItem from="1593050449384" duration="66000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
-    <proxy>direct</proxy>
+    <proxy>https://goproxy.io</proxy>
   </component>
 </project>
